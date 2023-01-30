@@ -1,3 +1,5 @@
+// StringArrayTest.generateStringArray();
+
 public class StringArrayTest {
     public static List<String> generateStringArray(Integer input) {
         List<String> result = new List<String>();
