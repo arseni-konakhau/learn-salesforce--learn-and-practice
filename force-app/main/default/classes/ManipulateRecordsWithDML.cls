@@ -65,9 +65,29 @@ public with sharing class ManipulateRecordsWithDML {
             Email = 'jane.smith@example.com',
             Description = 'Prefers to be contacted by email.'
         );
-        upsert jane2;
+        upsert jane2 Contact.fields.Email;
         // Verify that the contact has been updated
         String description = 'Prefers to be contacted by email.';
         System.assertEquals(description, [SELECT Description FROM Contact WHERE Id = :jane.Id].Description);
+        // Second run produces: ---------------------------------------
+        // Line: 68, Column: 1
+        // System.DmlException: Upsert failed.
+        // First exception on row 0; first error: DUPLICATE_EXTERNAL_ID,
+        // Email: more than one record found for external id field:
+        // [003Dn00000AnRtLIAV, 003Dn00000AnRt6IAF]: [Email]
+    }
+
+    // ManipulateRecordsWithDML.dmlExceptionHandling();
+    public static void dmlExceptionHandling() {
+        try {
+            // This causes an exception because
+            // the required Name field is not provided.
+            Account acct = new Account();
+            // Insert the account
+            insert acct;
+        } catch (DmlException e) {
+            String message = e.getMessage();
+            System.debug('A DML exception has occurred: ' + message);
+        }
     }
 }
