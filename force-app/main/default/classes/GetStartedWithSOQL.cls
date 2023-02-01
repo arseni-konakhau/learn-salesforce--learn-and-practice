@@ -9,8 +9,8 @@ public with sharing class GetStartedWithSOQL {
         return result;
     }
 
-    // GetStartedWithSOQL.prepareExampleData();
-    public static void prepareExampleData() {
+    // GetStartedWithSOQL.createSampleData();
+    public static void createSampleData() {
         // Add account and related contact
         Account acct = new Account(
             Name = 'SFDC Computing',
