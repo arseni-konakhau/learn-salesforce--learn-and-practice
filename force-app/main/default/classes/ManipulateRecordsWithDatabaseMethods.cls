@@ -10,6 +10,30 @@ public with sharing class ManipulateRecordsWithDatabaseMethods {
         }
     }
 
+    // ManipulateRecordsWithDatabaseMethods.insertRelatedRecords();
+    public static void insertRelatedRecords() {
+        Account acct = new Account(Name = 'SFDC Account');
+        insert acct;
+        // Once the account is inserted, the sObject will be
+        // populated with an ID.
+        // Get this ID.
+        ID acctID = acct.ID;
+        // Add a contact to this account.
+        Contact mario = new Contact(
+            FirstName = 'Mario',
+            LastName = 'Ruiz',
+            Phone = '415.555.1212',
+            AccountId = acctID
+        );
+        insert mario;
+    }
+
+    // ManipulateRecordsWithDatabaseMethods.deleteRelatedRecords();
+    public static void deleteRelatedRecords() {
+        Account[] queriedAccounts = [SELECT Id FROM Account WHERE Name = 'SFDC Account'];
+        delete queriedAccounts;
+    }
+
     // ManipulateRecordsWithDatabaseMethods.insertRecordsWithPartialSuccess();
     public static void insertRecordsWithPartialSuccess() {
         // Create a list of contacts

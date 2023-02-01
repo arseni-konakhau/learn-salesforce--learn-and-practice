@@ -55,7 +55,9 @@ public with sharing class ManipulateRecordsWithDML {
             Email = 'jane.smith@example.com',
             Description = 'Contact of the day'
         );
-        upsert jane;
+        // If insert was used in this example instead of upsert,
+        // a duplicate Jane Smith contact would have been inserted.
+        insert jane;
         // 1. Upsert using an idLookup field
         // Create a second sObject variable.
         // This variable doesn’t have any ID set.
