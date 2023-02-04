@@ -1,6 +1,6 @@
 <apex:page standardController="Contact">
     <apex:form>
-        <apex:pageBlock title="Edit Contact">
+        <apex:pageBlock title="Create Contact">
             <apex:pageBlockSection columns="1">
                 <apex:inputField value="{!Contact.FirstName}" />
                 <apex:inputField value="{!Contact.LastName}" />
