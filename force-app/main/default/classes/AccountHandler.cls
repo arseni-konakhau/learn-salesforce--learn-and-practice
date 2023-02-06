@@ -1,21 +1,33 @@
 public with sharing class AccountHandler {
     // public AccountHandler() {}
 
-    // AccountHandler.insertNewAccount();
-    public static Account insertNewAccount(String name) {
-        if (String.isBlank(name)) {
-            return null;
-        } else {
-            try {
-                Account account = new Account(Name = name);
-                insert account;
-                return account;
-            } catch (DmlException e) {
-                String message = e.getMessage();
-                System.debug('A DML exception has occurred: ' + message);
-                return null;
-            }
+    // // AccountHandler.insertNewAccount();
+    // public static Account insertNewAccount(String name) {
+    //     if (String.isBlank(name)) {
+    //         return null;
+    //     } else {
+    //         try {
+    //             Account account = new Account(Name = name);
+    //             insert account;
+    //             return account;
+    //         } catch (DmlException e) {
+    //             String message = e.getMessage();
+    //             System.debug('A DML exception has occurred: ' + message);
+    //             return null;
+    //         }
+    //     }
+    // }
+
+    // AccountHandler.insertAccount(3);
+    public static void insertAccount(Integer input) {
+        List<Account> addAccounts = new List<Account>();
+        for (Integer i = 0; i < input; i++) {
+            Account a = new Account();
+            a.Name = 'Acme Inc ' + i;
+            a.AccountNumber = 'A000' + i;
+            addAccounts.add(a);
         }
+        insert addAccounts;
     }
 }
 
