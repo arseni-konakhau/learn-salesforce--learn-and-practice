@@ -8,5 +8,16 @@
         <plural>true</plural>
         <value>Brokers</value>
     </caseValues>
+    <layouts>
+        <layout>Broker Layout</layout>
+        <sections>
+            <label />
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label />
+            <section>Picture</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>
