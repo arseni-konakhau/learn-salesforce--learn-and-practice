@@ -10,8 +10,5 @@
                 "node": true
             }
         }
-    ],
-    "rules": {
-        "no-unused-vars": "off"
-    }
+    ]
 }

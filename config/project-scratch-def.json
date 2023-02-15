@@ -1,6 +1,5 @@
 {
     "orgName": "arsenykonohov company",
-    "release": "preview",
     "edition": "Developer",
     "features": ["EnableSetPasswordInApi"],
     "settings": {
