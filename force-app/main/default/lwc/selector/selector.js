@@ -5,6 +5,8 @@ import USER_NAME from "@salesforce/schema/User.Name";
 const fields = [USER_ID, USER_NAME];
 
 export default class Selector extends LightningElement {
+    selectedProductId;
+
     get userId() {
         return USER_ID;
     }
