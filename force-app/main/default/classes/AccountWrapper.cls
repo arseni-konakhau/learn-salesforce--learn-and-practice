@@ -6,11 +6,7 @@ public with sharing class AccountWrapper {
     }
 
     public Decimal getRoundedAvgPriceOfOpps() {
-        AggregateResult[] ar = [
-            SELECT AVG(Amount)
-            FROM Opportunity
-            WHERE accountId = :thisAccount.id
-        ];
+        AggregateResult[] ar = [SELECT AVG(Amount) FROM Opportunity WHERE accountId = :thisAccount.id];
         System.debug(ar);
         Decimal average = (Decimal) ar[0].get('expr0');
         Long modulus = Math.mod(Integer.valueOf(average), 1000);

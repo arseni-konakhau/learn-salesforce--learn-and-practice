@@ -1,6 +1,5 @@
 @isTest
 private class AccountWrapper_Tests {
-
     @testSetup
     static void loadTestData() {
         List<Account> accounts = (List<Account>) Test.loadData(Account.SObjectType, 'accountData');
@@ -21,7 +20,7 @@ private class AccountWrapper_Tests {
         System.assert(sanityCheckListOfOpps.size() > 0, 'You need an opportunity to continue');
         Test.startTest();
         for (AccountWrapper a : accounts) {
-            Decimal value =  a.getRoundedAvgPriceOfOpps();
+            Decimal value = a.getRoundedAvgPriceOfOpps();
             System.assertEquals(value, 102000.00, 'Expected to get 102000.00');
         }
         Test.stopTest();
@@ -41,5 +40,35 @@ private class AccountWrapper_Tests {
             System.assert(value, 'isHighPriority: ' + value);
         }
         Test.stopTest();
+    }
+
+    @isTest
+    static void testNegativeAccountWrapperRoundedOpps() {
+        List<Account> accts = [SELECT Id FROM Account];
+        List<Opportunity> opps = [SELECT ID, Amount FROM Opportunity WHERE accountId IN :accts];
+        List<AccountWrapper> wrappers = new List<AccountWrapper>();
+        for (Opportunity o : opps) {
+            o.amount = 0;
+        }
+        update opps;
+        for (Account a : accts) {
+            wrappers.add(new AccountWrapper(a));
+        }
+        Test.startTest();
+        List<Boolean> exceptions = new List<Boolean>();
+        for (AccountWrapper a : wrappers) {
+            try {
+                a.getRoundedAvgPriceOfOpps();
+            } catch (AccountWrapper.AWException awe) {
+                if (awe.getMessage().equalsIgnoreCase('no won opportunities')) {
+                    exceptions.add(true);
+                }
+            }
+        }
+        Test.stopTest();
+        system.assertNotEquals(null, exceptions, 'expected at least one exception to have occured');
+        for (Boolean b : exceptions) {
+            system.assert(b, 'Account should have thrown an exception');
+        }
     }
 }
