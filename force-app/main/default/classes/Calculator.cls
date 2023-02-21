@@ -1,20 +1,19 @@
 public class Calculator {
-
-    /************************************
+    /*****************************************************************
      * 
      */
     public static Integer addition(Integer a, Integer b) {
         return a + b;
     }
 
-    /************************************
+    /*****************************************************************
      * 
      */
     public static Integer subtraction(Integer a, Integer b) {
         return a - b;
     }
 
-    /************************************
+    /*****************************************************************
      * 
      */
     public static Integer multiply(Integer a, Integer b) {
@@ -24,8 +23,8 @@ public class Calculator {
         return a * b;
     }
 
-    /************************************
-     * 
+    /*****************************************************************
+     *
      */
     public static Decimal divide(Integer numerator, Integer denominator) {
         if (denominator == 0) {
@@ -38,5 +37,8 @@ public class Calculator {
         return returnValue;
     }
 
+    /*****************************************************************
+     * 
+     */
     public class CalculatorException extends Exception {}
 }
