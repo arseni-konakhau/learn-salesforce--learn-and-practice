@@ -27,7 +27,7 @@ public with sharing class PositivePermission_Tests {
             Test.startTest();
             pos = [SELECT Id, Account__c, notes__c FROM Private_Object__c];
             Test.stopTest();
-            system.assert(pos.size() > 0, 'a user without the permission set cannot see any records');
+            system.assert(pos.size() > 0, 'NO user with proper permission set');
         }
     }
 
