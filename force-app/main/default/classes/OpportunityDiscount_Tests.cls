@@ -2,7 +2,7 @@
 private class OpportunityDiscount_Tests {
 
     @isTest
-    static void test_positive_low_priority() {
+    static void testpositivelowpriority() {
         AccountWrapper mockAccountWrapper = (AccountWrapper) Test.createStub(AccountWrapper.class, new AccountWrapperMock());
         OpportunityDiscount od = new OpportunityDiscount(mockAccountWrapper);
         Decimal result;
@@ -13,7 +13,7 @@ private class OpportunityDiscount_Tests {
     }
 
     @isTest
-    static void test_positive_high_priority() {
+    static void testpositivehighpriority() {
         AccountWrapperMock.isHighPriorityReturn = true;
         AccountWrapper mockAccountWrapper = (AccountWrapper) Test.createStub(AccountWrapper.class, new AccountWrapperMock());
         OpportunityDiscount od = new OpportunityDiscount(mockAccountWrapper);

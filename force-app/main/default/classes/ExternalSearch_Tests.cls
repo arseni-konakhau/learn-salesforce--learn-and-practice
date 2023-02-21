@@ -2,7 +2,7 @@
 private class ExternalSearch_Tests {
 
     @isTest
-    static void test_method_one() {
+    static void testmethodone() {
         HttpMockFactory mock = new HttpMockFactory(200, 'OK', 'I found it!', new Map<String, String>());
         Test.setMock(HttpCalloutMock.class, mock);
         String result;
@@ -13,7 +13,7 @@ private class ExternalSearch_Tests {
     }
 
     @isTest
-    static void test_method_negative() {
+    static void testmethodnegative() {
         HttpMockFactory mock = new HttpMockFactory(500, 'ERROR', 'Server is NOT AVAILABLE', new Map<String, String>());
         Test.setMock(HttpCalloutMock.class, mock);
         String result;

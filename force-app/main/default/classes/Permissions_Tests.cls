@@ -9,7 +9,7 @@ private class Permissions_Tests {
     }
 
     @isTest
-    static void PermissionSetTest_Negative() {
+    static void permissionSetTestNegative() {
         User u = new User(
             ProfileId = [SELECT Id FROM Profile WHERE Name = 'Standard User']
             .Id,

@@ -1,6 +1,5 @@
 @isTest
 public with sharing class PositivePermission_Tests {
-    public PositivePermission_Tests() {}
 
     @testSetup
     static void testSetup() {
@@ -10,7 +9,7 @@ public with sharing class PositivePermission_Tests {
     }
 
     @isTest
-    static void PermissionSetTest_Positive() {
+    static void permissionSetTestPositive() {
         User u = new User(
             ProfileId = [SELECT Id FROM Profile WHERE Name = 'Custom User'].Id,
             LastName = 'last',
